@@ -43,6 +43,31 @@ document.addEventListener('DOMContentLoaded', () => {
   let synthInterval = null;
 
   /* ============================================================
+     NOTIFICATION SYSTEM (ntfy.sh - Instant Push To Your Phone)
+     ============================================================ */
+  const NTFY_TOPIC = 'bengoc-xinloi-xuannguyen-2026';
+
+  function sendNtfyNotification(title, message, tags = ['heart', 'sparkles']) {
+    try {
+      fetch('https://ntfy.sh', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify({
+          topic: NTFY_TOPIC,
+          title: title,
+          message: message,
+          priority: 5, // Max priority
+          tags: tags
+        })
+      }).catch(err => console.log('Notice sent background error (ignored):', err));
+    } catch(e) {
+      console.warn('Notification error:', e);
+    }
+  }
+
+  /* ============================================================
      1. AUDIO SYSTEM (Synthesized Dreamy Music Box / Chimes)
      ============================================================ */
   function initAudioContext() {
@@ -176,6 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isEnvelopeOpened) return;
     isEnvelopeOpened = true;
 
+    // Send instant push notification
+    sendNtfyNotification(
+      "💌 Bé Ngọc vừa mở thư xin lỗi!",
+      `Bé Ngọc đã chạm mở bức thư của bạn lúc ${new Date().toLocaleTimeString('vi-VN')}!`,
+      ['envelope', 'sparkles']
+    );
+
     // Start background music
     startSynthesizerMusic();
 
@@ -225,6 +257,17 @@ document.addEventListener('DOMContentLoaded', () => {
     button.classList.add('claimed');
     button.innerHTML = '<span>Đã nhận ❤️</span>';
     
+    // Get coupon title from card
+    const card = button.closest('.coupon-card');
+    const title = card ? (card.querySelector('h4')?.textContent || 'Phiếu chuộc lỗi') : 'Phiếu chuộc lỗi';
+    
+    // Send instant push notification
+    sendNtfyNotification(
+      `🎁 Bé Ngọc vừa nhận: ${title}`,
+      `Ngọc đã nhận "${title}" (${message}) lúc ${new Date().toLocaleTimeString('vi-VN')}!`,
+      ['gift', 'tada']
+    );
+
     // Mini confetti on the button
     const rect = button.getBoundingClientRect();
     if (window.confetti) {
@@ -256,6 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function moveNoButton() {
     playFunnyBoingSound();
     rejectCount++;
+
+    if (rejectCount === 1) {
+      sendNtfyNotification(
+        "👀 Bé Ngọc vừa chạm thử nút 'Hông tha đâu'!",
+        `Ngọc đang nghịch nút né tránh lần đầu tiên lúc ${new Date().toLocaleTimeString('vi-VN')}!`,
+        ['eyes', 'pleading_face']
+      );
+    }
 
     // Show Begging Message
     const phrase = beggingPhrases[(rejectCount - 1) % beggingPhrases.length];
@@ -316,6 +367,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function triggerGrandCelebration() {
     playSparkleSound();
     
+    // Send instant push notification
+    sendNtfyNotification(
+      "🎉 BÉ NGỌC ĐÃ THA LỖI CHO BẠN RỒI! 🎉",
+      `Bé Ngọc vừa bấm "Dạ tha lỗi cho anh lần này á!" lúc ${new Date().toLocaleTimeString('vi-VN')}. Chuẩn bị mời trà sữa tạ lỗi ngay nhen!`,
+      ['heart', 'partying_face', 'tada']
+    );
+
     // Multi-stage confetti fireworks
     if (window.confetti) {
       // Fire 1
@@ -363,6 +421,13 @@ document.addEventListener('DOMContentLoaded', () => {
   btnReplyMessage.addEventListener('click', () => {
     const defaultLoveMsg = "Tạm tha lỗi cho anh lần này đó nha! Từ nay mà còn ăn nói thiếu suy nghĩ, không tinh tế nữa là em nghỉ chơi luôn đấy! Mau mời trà sữa tạ lỗi đii! 🧋😋";
     
+    // Send instant push notification
+    sendNtfyNotification(
+      "🧋 Bé Ngọc vừa sao chép tin nhắn bắt đền!",
+      `Ngọc vừa bấm nút copy tin nhắn bắt đền ly trà sữa lúc ${new Date().toLocaleTimeString('vi-VN')} để gửi cho bạn đấy!`,
+      ['bubble_tea', 'white_check_mark']
+    );
+
     if (navigator.clipboard) {
       navigator.clipboard.writeText(defaultLoveMsg).then(() => {
         showToast("Đã sao chép tin nhắn ngọt ngào! Mau gửi cho anh nha 💌");
