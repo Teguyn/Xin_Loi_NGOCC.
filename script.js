@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const musicBtn = document.getElementById('music-btn');
   const discIcon = document.getElementById('disc-icon');
+  const bgAudio = document.getElementById('bg-audio');
   
   const btnYes = document.getElementById('btn-yes');
   const btnNo = document.getElementById('btn-no');
@@ -148,21 +149,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 450);
   }
 
-  function stopSynthesizerMusic() {
-    isMusicPlaying = false;
-    if (synthInterval) {
-      clearInterval(synthInterval);
-      synthInterval = null;
+  // Chorus start time: 68s (01:08: "Đã có lúc anh thấy hạnh phúc xa xôi quá...") -> 01:31: "Anh mong được một lần thứ tha..."
+  const CHORUS_START_TIME = 68;
+
+  function startMusic() {
+    isMusicPlaying = true;
+    musicBtn.classList.add('disc-playing');
+
+    if (bgAudio) {
+      try {
+        if (bgAudio.currentTime < CHORUS_START_TIME || bgAudio.currentTime > 140) {
+          bgAudio.currentTime = CHORUS_START_TIME;
+        }
+        const playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            console.log("Playing Hoi Han Trong Anh - Tuan Hung!");
+          }).catch(err => {
+            console.warn("Audio file play prevented, using synth fallback:", err);
+            startSynthesizerMusic();
+          });
+          return;
+        }
+      } catch (e) {
+        startSynthesizerMusic();
+        return;
+      }
     }
+    startSynthesizerMusic();
+  }
+
+  function pauseMusic() {
+    isMusicPlaying = false;
     musicBtn.classList.remove('disc-playing');
+    if (bgAudio) {
+      try { bgAudio.pause(); } catch(e){}
+    }
+    stopSynthesizerMusic();
   }
 
   function toggleMusic() {
     if (isMusicPlaying) {
-      stopSynthesizerMusic();
+      pauseMusic();
     } else {
-      startSynthesizerMusic();
+      if (bgAudio && bgAudio.paused) {
+        bgAudio.play().then(() => {
+          isMusicPlaying = true;
+          musicBtn.classList.add('disc-playing');
+        }).catch(() => {
+          startMusic();
+        });
+      } else {
+        startMusic();
+      }
     }
+  }
+
+  if (bgAudio) {
+    // When song ends or loops, jump back to chorus
+    bgAudio.addEventListener('ended', () => {
+      bgAudio.currentTime = CHORUS_START_TIME;
+      bgAudio.play().catch(() => {});
+    });
   }
 
   musicBtn.addEventListener('click', toggleMusic);
@@ -208,8 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ['envelope', 'sparkles']
     );
 
-    // Start background music
-    startSynthesizerMusic();
+    // Start background music (Hối Hận Trong Anh - Tuấn Hưng)
+    startMusic();
 
     // Trigger sweet heart explosion
     triggerHeartExplosion();

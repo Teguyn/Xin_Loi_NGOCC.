@@ -30,9 +30,14 @@
   <!-- Canvas for floating background petals & hearts -->
   <canvas id="ambient-canvas"></canvas>
 
+  <!-- Audio Player (Điệp khúc Hối Hận Trong Anh - Tuấn Hưng) -->
+  <audio id="bg-audio" preload="auto" loop playsinline>
+    <source src="assets/hoi_han_trong_anh.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- Floating Audio Controls -->
   <div class="audio-widget" id="audio-widget">
-    <button class="music-btn" id="music-btn" aria-label="Bật/Tắt nhạc nền" title="Bật/Tắt nhạc nền">
+    <button class="music-btn" id="music-btn" aria-label="Bật/Tắt bài hát Hối Hận Trong Anh" title="Bật/Tắt nhạc nền">
       <span class="disc-icon" id="disc-icon">🎵</span>
       <span class="music-wave" id="music-wave">
         <i></i><i></i><i></i><i></i>
@@ -61,7 +66,7 @@
           <span class="tap-hint">✨ Chạm vào đây để mở thư ✨</span>
         </div>
 
-        <p class="envelope-note">Bật chút âm lượng để nghe giai điệu nhẹ nhàng nha~</p>
+        <p class="envelope-note">Bật âm lượng để nghe giai điệu "Hối Hận Trong Anh" nha~ 🎶</p>
       </div>
     </section>
 
