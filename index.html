@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gửi Bé Ngọc của anh 💌 Anh xin lỗi bé nhiều lắm!</title>
+  <meta name="description" content="Trang web xin lỗi chân thành và ngọt ngào nhất gửi tặng công chúa Bé Ngọc. Anh biết lỗi rồi, tha lỗi cho anh nha!">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%22100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Canvas Confetti Library for celebration effects -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Canvas for floating background petals & hearts -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Floating Audio Controls -->
+  <div class="audio-widget" id="audio-widget">
+    <button class="music-btn" id="music-btn" aria-label="Bật/Tắt nhạc nền" title="Bật/Tắt nhạc nền">
+      <span class="disc-icon" id="disc-icon">🎵</span>
+      <span class="music-wave" id="music-wave">
+        <i></i><i></i><i></i><i></i>
+      </span>
+    </button>
+  </div>
+
+  <!-- Main Container (Mobile-First Experience) -->
+  <main class="mobile-wrapper">
+
+    <!-- Screen 1: The Romantic Envelope / Doorway -->
+    <section class="screen-envelope active" id="screen-envelope">
+      <div class="envelope-card glass-panel">
+        <div class="floating-badge">💌 Thư gửi riêng công chúa</div>
+        <h1 class="envelope-title">Gửi Bé Ngọc của anh ❤️</h1>
+        <p class="envelope-subtitle">Anh có một điều quan trọng nhất muốn nói với em...</p>
+        
+        <div class="envelope-graphic-box" id="envelope-trigger">
+          <div class="envelope-icon-wrap pulse-glow">
+            <span class="heart-seal">💖</span>
+            <div class="envelope-base">
+              <div class="envelope-flap"></div>
+              <div class="envelope-paper-peek">💌</div>
+            </div>
+          </div>
+          <span class="tap-hint">✨ Chạm vào đây để mở thư ✨</span>
+        </div>
+
+        <p class="envelope-note">Hãy bật âm lượng để nghe giai điệu ngọt ngào nha bé yêu~</p>
+      </div>
+    </section>
+
+    <!-- Screen 2: The Main Interactive Apology Page -->
+    <section class="screen-content" id="screen-content">
+      
+      <!-- Sticky / Header Bar -->
+      <header class="app-header glass-panel">
+        <span class="header-heart">🌸</span>
+        <div class="header-text">
+          <h2>Xin Lỗi Bé Ngọc</h2>
+          <p>Từ tận đáy lòng của anh</p>
+        </div>
+        <span class="header-heart">🌸</span>
+      </header>
+
+      <!-- Section: Cute Bear Apology Card -->
+      <div class="card-hero glass-panel animate-fade-in">
+        <div class="bear-img-wrapper">
+          <img src="assets/bear_sorry.jpg" alt="Gấu bông xin lỗi bé Ngọc" class="bear-avatar" id="hero-bear-img">
+          <div class="tear-droplet tear-left">💧</div>
+          <div class="tear-droplet tear-right">💧</div>
+        </div>
+        <div class="bear-caption">
+          <span class="bubble-tag">Anh đã nói không suy nghĩ làm Ngọc buồn... 🥺</span>
+          <h3 class="hero-heading">Ngọc ơi, anh xin lỗi vì thiếu tinh tế!</h3>
+        </div>
+      </div>
+
+      <!-- Section: Sincere Letter -->
+      <div class="card-letter glass-panel animate-fade-in delay-1">
+        <div class="letter-stamp">
+          <span>💌 To: Bé Ngọc</span>
+        </div>
+        <div class="letter-body">
+          <p class="letter-para salutation">Bé Ngọc thương mến của anh,</p>
+          <p class="letter-para">
+            Mấy hôm nay làm Ngọc buồn, lòng anh bứt rứt, hối hận và tự trách mình nhiều lắm. Anh biết lỗi lớn nhất của anh là <strong>nói mà không suy nghĩ trước</strong>, tính tình vụng về, thiếu tinh tế để rồi buột miệng nói ra những câu làm tổn thương người con gái anh thương nhất.
+          </p>
+          <p class="letter-para highlight-para">
+            Anh đã quá vô tâm, không chịu đặt mình vào cảm xúc của Ngọc trước khi nói, để sự thiếu tinh tế của anh làm khóe mắt em phải cay và phải ấm ức một mình... Anh sai thật rồi, anh nhận hết lỗi và không bao biện một lời nào cả!
+          </p>
+          <p class="letter-para">
+            Điều anh sợ nhất trên đời là thấy Ngọc buồn vì anh. Nụ cười của Ngọc là điều xinh đẹp và bình yên nhất trong cuộc sống của anh. Đừng để bụng anh nữa nha bé iu, cho anh một cơ hội sửa sai và chuộc lỗi với công chúa nhé...
+          </p>
+
+          <!-- Cute Commitment Box -->
+          <div class="pledge-card">
+            <div class="pledge-title">📜 Bản Cam Kết Của Anh Với Bé Ngọc</div>
+            <ul class="pledge-list">
+              <li>🌸 <strong>Uốn lưỡi 7 lần trước khi nói</strong>, tuyệt đối không bao giờ buột miệng vô tâm nữa.</li>
+              <li>✨ <strong>Học cách tinh tế hơn mỗi ngày</strong>, luôn quan sát và nâng niu cảm xúc của Ngọc.</li>
+              <li>💖 <strong>Luôn nói lời dịu dàng</strong>, khi Ngọc dỗi phải lập tức dỗ dành chứ không cãi cùn.</li>
+            </ul>
+          </div>
+
+          <p class="letter-sign">
+            <span>Người luôn yêu và có lỗi với Ngọc,</span>
+            <strong class="sign-name">Anh người iu của em ❤️</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Section: 5 Special Apology Coupons (Phiếu Đền Bù Cho Bé Ngọc) -->
+      <div class="section-coupons animate-fade-in delay-2">
+        <div class="section-header">
+          <span class="badge-pill">🎁 Quà Chuộc Lỗi Đặc Biệt</span>
+          <h3 class="section-title">Phiếu Đền Bù Dành Riêng Cho Ngọc</h3>
+          <p class="section-desc">Chạm vào từng phiếu để kích hoạt quyền lợi công chúa nha!</p>
+        </div>
+
+        <div class="coupons-grid">
+          <!-- Coupon 1 -->
+          <div class="coupon-card glass-panel" data-coupon="tinh-te">
+            <div class="coupon-icon">✨</div>
+            <div class="coupon-details">
+              <h4>Phiếu Uốn Lưỡi 7 Lần & Siêu Tinh Tế</h4>
+              <p>Chỉ được nói lời ngọt ngào, dịu dàng. Vi phạm phạt 10 ly trà sữa lập tức!</p>
+            </div>
+            <button class="btn-claim-coupon" onclick="claimCoupon(this, 'Anh xin thề từ nay siêu tinh tế với Ngọc! ✨')">
+              <span>Nhận phiếu</span>
+            </button>
+          </div>
+
+          <!-- Coupon 2 -->
+          <div class="coupon-card glass-panel" data-coupon="tra-sua">
+            <div class="coupon-icon">🧋</div>
+            <div class="coupon-details">
+              <h4>01 Ly Trà Sữa Hạ Hỏa Siêu To</h4>
+              <p>Full topping yêu thích, 100% ngọt ngào chuộc tội, ship tận giường cho bé!</p>
+            </div>
+            <button class="btn-claim-coupon" onclick="claimCoupon(this, 'Ly trà sữa thơm ngon sẵn sàng phục vụ Ngọc! 🧋')">
+              <span>Nhận phiếu</span>
+            </button>
+          </div>
+
+          <!-- Coupon 3 -->
+          <div class="coupon-card glass-panel" data-coupon="di-an">
+            <div class="coupon-icon">🍲</div>
+            <div class="coupon-details">
+              <h4>Bao Trọn Bữa Ăn Mọi Món Bé Thích</h4>
+              <p>Lẩu, nướng, bánh tráng, ốc... Ngọc chỉ việc ăn ngon, anh lo thanh toán!</p>
+            </div>
+            <button class="btn-claim-coupon" onclick="claimCoupon(this, 'Lên lịch đi ăn no nê ngay thôiii công chúa 🍲')">
+              <span>Nhận phiếu</span>
+            </button>
+          </div>
+
+          <!-- Coupon 4 -->
+          <div class="coupon-card glass-panel" data-coupon="chieu-chuong">
+            <div class="coupon-icon">👑</div>
+            <div class="coupon-details">
+              <h4>Quyền Lực Chiều Chuộng Tuyệt Đối</h4>
+              <p>Anh chỉ được nói 'Dạ vâng bé iu', răm rắp nghe lời không dám cãi nửa lời!</p>
+            </div>
+            <button class="btn-claim-coupon" onclick="claimCoupon(this, 'Từ giờ Ngọc là nóc nhà quyền lực nhất! 👑✨')">
+              <span>Nhận phiếu</span>
+            </button>
+          </div>
+
+          <!-- Coupon 5 -->
+          <div class="coupon-card glass-panel" data-coupon="om-ap">
+            <div class="coupon-icon">🧸</div>
+            <div class="coupon-details">
+              <h4>Gối Ôm Vỗ Về & Lắng Nghe 24/7</h4>
+              <p>Mỗi khi mệt mỏi hay giận dỗi, một cái ôm thật chặt để Ngọc thấy bình yên.</p>
+            </div>
+            <button class="btn-claim-coupon" onclick="claimCoupon(this, 'Ôm một cái thật chặt nàoooo! Ấm áp x100 🧸💖')">
+              <span>Nhận phiếu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Reasons Why I Adore You -->
+      <div class="section-reasons glass-panel animate-fade-in delay-3">
+        <div class="section-header">
+          <span class="badge-pill">✨ Lời Thú Nhận</span>
+          <h3 class="section-title">Những Điều Ở Ngọc Khiến Anh Yêu Nhất</h3>
+        </div>
+
+        <div class="reasons-carousel">
+          <div class="reason-item active">
+            <span class="reason-emoji">🌸</span>
+            <h4>Nụ cười của Ngọc</h4>
+            <p>Mỗi khi thấy Ngọc cười, bao nhiêu mệt mỏi trong anh đều tan biến hết trơn.</p>
+          </div>
+          <div class="reason-item">
+            <span class="reason-emoji">👀</span>
+            <h4>Đôi mắt long lanh</h4>
+            <p>Đặc biệt là lúc chu mỏ giận dỗi, nhìn vừa thương mà vừa muốn cưng nựng ghê á!</p>
+          </div>
+          <div class="reason-item">
+            <span class="reason-emoji">💖</span>
+            <h4>Sự quan tâm ấm áp</h4>
+            <p>Dù có hay cằn nhằn xíu nhưng anh biết Ngọc luôn thương và lo lắng cho anh nhất.</p>
+          </div>
+          <div class="reason-item">
+            <span class="reason-emoji">🍀</span>
+            <h4>Vì Ngọc là món quà tuyệt nhất</h4>
+            <p>Có được Ngọc bên cạnh là may mắn lớn nhất của cuộc đời anh rồi.</p>
+          </div>
+        </div>
+        
+        <div class="reasons-dots">
+          <span class="dot active" onclick="switchReason(0)"></span>
+          <span class="dot" onclick="switchReason(1)"></span>
+          <span class="dot" onclick="switchReason(2)"></span>
+          <span class="dot" onclick="switchReason(3)"></span>
+        </div>
+      </div>
+
+      <!-- Section: The Ultimate Question & Fun Escape Button -->
+      <div class="section-question glass-panel animate-fade-in delay-4" id="section-question">
+        <div class="question-header">
+          <div class="heart-pulse-icon">🥺👉👈</div>
+          <h3 class="question-title">Bé Ngọc ơi...<br>Em có tha lỗi cho anh hong?</h3>
+          <p class="question-sub" id="question-hint">Hãy chọn câu trả lời bằng cả trái tim em nha!</p>
+        </div>
+
+        <div class="actions-arena" id="actions-arena">
+          <!-- The Yes Button: Grows larger with every playful rejection -->
+          <button class="btn-action btn-yes pulse-glow" id="btn-yes">
+            <span class="btn-icon">💖</span>
+            <span class="btn-text">Dạ tha lỗi cho anh á!</span>
+          </button>
+
+          <!-- The No Button: Runs away or gives cute begging prompts -->
+          <button class="btn-action btn-no" id="btn-no">
+            <span class="btn-text" id="no-btn-text">Hông tha đâu! 😤</span>
+          </button>
+        </div>
+
+        <div class="beg-message-box hidden" id="beg-message-box">
+          <p id="beg-message-text">Năn nỉ Ngọc iu mừ... 🥺 Tha lỗi cho anh đi!</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <p>Thiết kế dành riêng cho <strong>Bé Ngọc</strong> với 100% tình yêu và sự hối lỗi ❤️</p>
+        <span class="footer-copy">Forever & Always With You</span>
+      </footer>
+
+    </section>
+
+    <!-- Modal / Screen: Celebration Forgiven State -->
+    <div class="modal-forgiven-backdrop" id="modal-forgiven">
+      <div class="modal-forgiven-card glass-panel bounce-in">
+        <div class="celebration-badge">🎉 Yaaaaa! Em tha lỗi cho anh gùi! 🎉</div>
+        
+        <div class="hug-img-wrapper">
+          <img src="assets/bear_hug.jpg" alt="Ôm nhau hạnh phúc" class="hug-avatar">
+          <div class="sparkle-ring"></div>
+        </div>
+
+        <h2 class="forgiven-title">Cảm Ơn Công Chúa Bé Ngọc Của Anh! 🥰</h2>
+        
+        <div class="forgiven-letter">
+          <p>
+            Anh vui muốn bay lên chín tầng mây luônnn! 🚀 Cảm ơn bé vì đã luôn bao dung và yêu thương anh.
+          </p>
+          <p class="promise-highlight">
+            Anh hứa từ nay sẽ luôn uốn lưỡi 7 lần trước khi nói, tinh tế hơn từng chút một, luôn nâng niu và không bao giờ làm Bé Ngọc phải ấm ức nữa! 💖
+          </p>
+        </div>
+
+        <div class="forgiven-actions">
+          <button class="btn-messenger" id="btn-reply-message">
+            <span>💬 Nhắn tin bắt đền anh ngay</span>
+          </button>
+          <button class="btn-close-modal" id="btn-replay">
+            <span>💖 Yêu anh nhiều nhiều</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification for Coupons -->
+    <div class="toast-notice" id="toast-notice">
+      <span class="toast-icon">✨</span>
+      <span class="toast-msg" id="toast-msg">Đã kích hoạt phiếu!</span>
+    </div>
+
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
