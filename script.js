@@ -24,16 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastNotice = document.getElementById('toast-notice');
   const toastMsg = document.getElementById('toast-msg');
 
-  // Begging phrases list
+  // Begging phrases list (talking / crush stage)
   const beggingPhrases = [
-    "Anh biết cái miệng anh buột nói thiếu suy nghĩ làm Ngọc buồn gùi mà 🥺",
-    "Từ nay anh hứa sẽ uốn lưỡi 7 lần, luôn tinh tế và nâng niu Ngọc mừ! 🙏",
-    "Anh sai rồi... Đừng giận anh nữa mò, anh nhớ bé iu lắm rồi 😭",
-    "Năn nỉ công chúa đó, anh dắt đi ăn trà sữa tạ lỗi liền nè 🧋",
-    "Anh hứa từ nay không bao giờ buột miệng nói lời vô tâm nữa đâu! 🐶",
-    "Nút này bị khoá rồi á, Ngọc bấm nút màu hồng tha lỗi cho anh điii 💖",
-    "Huhu tim anh đau quặn thắt nè, đừng dỗi anh nữa mừ! 💔",
-    "Ngọc tha lỗi cho anh nha, anh thương Ngọc nhất trần đời luônnn 🥰"
+    "Anh biết cái miệng anh nói nhanh hơn não làm Ngọc phiền lòng rồi mà 🥺",
+    "Cho anh thêm một cơ hội để thể hiện lại sự tinh tế đi mò 🙏",
+    "Đừng bơ tin nhắn của anh nữa nha, anh sợ mất cơ hội tìm hiểu Ngọc lắm 😭",
+    "Năn nỉ Ngọc đó, anh mời ly trà sữa tạ lỗi liền nè 🧋",
+    "Anh hứa từ nay sẽ nói chuyện chững chạc và tinh tế hơn x100 lần! ✨",
+    "Nút này bị khoá gùi á, Ngọc bấm nút màu hồng tha lỗi cho anh đi mà 🌸",
+    "Huhu anh đang hối hận lắm nè, đừng dỗi anh nữa mò! 🥺👉👈",
+    "Ngọc tha lỗi cho anh nha, anh mời đi ăn một bữa tạ tội đàng hoàng luôn! 🍲"
   ];
 
   let rejectCount = 0;
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btnNo.style.opacity = '0';
       btnNo.style.pointerEvents = 'none';
 
-      begMessageText.textContent = "Nút 'Hông tha' đã tự động biến mất gùi! Bé chỉ có thể tha thứ cho anh thoaiii 🥺💖";
+      begMessageText.textContent = "Nút 'Hông tha' đã tự động biến mất gùi! Ngọc cho anh một cơ hội sửa sai nhen 🥺🌸";
       
       btnYes.style.transform = 'scale(1.15)';
       btnYes.style.width = '100%';
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reply message button (copy to clipboard & open share prompt)
   btnReplyMessage.addEventListener('click', () => {
-    const defaultLoveMsg = "Em tạm tha lỗi cho anh lần này đó nha! Từ nay mà còn ăn nói thiếu suy nghĩ, không tinh tế làm em buồn nữa là biết tay em đấy! Mau dắt em đi ăn với mua trà sữa chuộc lỗi liền đii! 💖🥰";
+    const defaultLoveMsg = "Tạm tha lỗi cho anh lần này đó nha! Từ nay mà còn ăn nói thiếu suy nghĩ, không tinh tế nữa là em nghỉ chơi luôn đấy! Mau mời trà sữa tạ lỗi đii! 🧋😋";
     
     if (navigator.clipboard) {
       navigator.clipboard.writeText(defaultLoveMsg).then(() => {
